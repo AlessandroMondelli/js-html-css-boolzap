@@ -1,0 +1,64 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+}
+
+/*** SFONDO ***/
+#all {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+#top {
+    height: 125px;
+    background-color: #1EBEA5;
+}
+
+#bottom {
+    height: calc(100vh - 125px);
+    background-color: #D6DBD7;
+}
+
+/***    ***/
+
+/*** CONTAINER CENTRALE ***/
+.container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    height: 95vh;
+    width: 1440px;
+    background-color: white;
+}
+
+/*** STILE GENERALE DUE SEZIONI. 1-LISTA CONTATTI 2-MESSAGGI ***/
+.sez {
+    float: left;
+    height: 100%;
+}
+
+.sez.left {
+    width: 30%;
+    background-color: yellow;
+}
+
+.sez.right {
+    width: 70%;
+    background-color: blue;
+}
+
+/***    ***/
+
+/*** STILE LISTA CONTATTI ***/
+.top-container {
+    height: 50px;
+    background-color: #EFEFEF;
+}
+
+.top-container.left {
+    border-right: 1.5px solid rgba(191,191,191,0.5);
+}
