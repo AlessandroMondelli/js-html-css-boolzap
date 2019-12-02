@@ -55,10 +55,65 @@
 
 /*** STILE LISTA CONTATTI ***/
 .top-container {
-    height: 50px;
+    height: 55px;
     background-color: #EFEFEF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .top-container.left {
     border-right: 1.5px solid rgba(191,191,191,0.5);
+}
+
+.top-images {
+    height: inherit;
+    display: inline-block;
+    text-align: center;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.top-images img {
+    height: 90%;
+    float: left;
+    clear: both;
+    background-color: white;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    margin-top: 5px;
+}
+
+.top-icons i {
+    font-size: 18px;
+    margin-right: 10px;
+    color: rgba(152,152,152,0.6);
+    transition: 0.3s;
+    padding: 3px;
+    cursor: pointer;
+}
+
+.top-icons i:hover {
+    color: rgba(152,152,152,1)
+}
+
+/*** STILE MESSAGGI ***/
+.top-container.right .top-images {
+    position: relative;
+}
+
+.top-container.right .top-images p {
+    text-align: left;
+    display: block;
+    white-space: nowrap;
+    margin-left: 55px;
+}
+
+.top-container.right .top-images p:not(:last-child) {
+    margin-top: 5px;
+}
+
+.top-container.right .top-images p:last-child {
+    color: rgba(152,152,152);
 }
