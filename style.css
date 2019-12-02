@@ -43,7 +43,6 @@
 
 .sez.left {
     width: 30%;
-    background-color: yellow;
 }
 
 .sez.right {
@@ -98,11 +97,114 @@
     color: rgba(152,152,152,1)
 }
 
-/*** STILE MESSAGGI ***/
-.top-container.right .top-images {
-    position: relative;
+#noti-activemess {
+    height: 60px;
+    background-color: #8EDAFC;
 }
 
+#noti-activemess i, #noti-activemess p {
+    margin-top: 10px;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+#noti-activemess i {
+    float: left;
+    font-size: 16px;
+    padding: 10px 9px;
+    background-color: white;
+    color: #8EDAFC;
+    border-radius: 50%;
+}
+
+#noti-activemess a {
+    color: rgba(0,0,0,0.7);
+    font-size: 14px;
+}
+
+#search-mess {
+    height: 40px;
+    background-color: #EFEFEF;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+    padding-top: 5px;
+}
+
+
+.search-butt a {
+    float: left;
+    width: 20%;
+    background-color: white;
+    padding: 5px 10px;
+    text-align: center;
+    color: rgba(152,152,152,0.6);
+    box-shadow: inset 0px 0px 0px 1px rgba(152,152,152,0.2);
+}
+
+.search-zone {
+    float: left;
+    width: 75%;
+    background-color: white;
+    padding: 5px 10px;
+    box-shadow: inset 0px 0px 0px 1px rgba(152,152,152,0.1);
+}
+
+.search-zone input {
+    border: 0;
+    width: 80%;
+}
+
+.search-zone input:focus {
+    outline: none;
+}
+
+#conversations {
+    overflow-y: scroll;
+    height: 78.5vh;
+}
+
+.n-conv {
+    height: 60px;
+    width: 100%;
+    background-color: white;
+    cursor: pointer;
+}
+
+.img-conv {
+    float: left;
+    width: 15%;
+}
+
+.img-conv img {
+    width: 80%;
+    background-color: #EEEFF2;
+    border-radius: 50%;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.mess-conv  {
+    float: left;
+    width: 85%;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.mess-conv span {
+    font-size: 14px;
+    color: rgba(152,152,152,0.6);
+}
+
+.n-conv  {
+    margin-bottom: 10px;
+}
+
+.n-conv:not(:last-child)  {
+    padding-bottom: 65px;
+    border-bottom: 1px solid rgba(152,152,152,0.2);
+}
+
+/*** STILE MESSAGGI ***/
 .top-container.right .top-images p {
     text-align: left;
     display: block;
@@ -115,5 +217,5 @@
 }
 
 .top-container.right .top-images p:last-child {
-    color: rgba(152,152,152);
+    color: rgb(152,152,152);
 }
