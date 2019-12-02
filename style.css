@@ -5,6 +5,20 @@
     font-family: 'Lato', sans-serif;
 }
 
+.write {
+    background-color: white;
+    padding: 5px 10px;
+    box-shadow: inset 0px 0px 0px 1px rgba(152,152,152,0.3);
+}
+
+.write input {
+    border: 0;
+}
+
+.write input:focus {
+    outline: none;
+}
+
 /*** SFONDO ***/
 #all {
     width: 100vw;
@@ -47,7 +61,6 @@
 
 .sez.right {
     width: 70%;
-    background-color: blue;
 }
 
 /***    ***/
@@ -130,7 +143,6 @@
     padding-top: 5px;
 }
 
-
 .search-butt a {
     float: left;
     width: 20%;
@@ -141,21 +153,13 @@
     box-shadow: inset 0px 0px 0px 1px rgba(152,152,152,0.2);
 }
 
-.search-zone {
+.write.search-zone {
     float: left;
     width: 75%;
-    background-color: white;
-    padding: 5px 10px;
-    box-shadow: inset 0px 0px 0px 1px rgba(152,152,152,0.1);
 }
 
-.search-zone input {
-    border: 0;
+.write.search-zone input {
     width: 80%;
-}
-
-.search-zone input:focus {
-    outline: none;
 }
 
 #conversations {
@@ -218,4 +222,68 @@
 
 .top-container.right .top-images p:last-child {
     color: rgb(152,152,152);
+}
+
+.central-message-zone {
+    background-image: url("https://66.media.tumblr.com/53a35e7ed66f3159e01f3663af30706b/tumblr_ouztgbH0CG1vj8v9mo1_1280.png");
+    background-size: contain;
+    background-repeat: repeat;
+    background-position: center;
+    height: 83vh;
+    overflow-y: scroll;
+}
+
+.mess {
+    clear: both;
+    margin: 20px;
+    width: 325px;
+    padding: 15px;
+    border-radius: 5px;
+    position: relative;
+}
+
+.mess.received {
+    float: left;
+    background-color: white;
+}
+
+.mess.sent {
+    float: right;
+    background-color: lightgreen;
+}
+
+.mess span {
+    font-size: 12px;
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    color: rgba(152,152,152,0.7);
+}
+
+.send-mess {
+    background-color: rgba(152,152,152,0.1);
+    height: 59px;
+}
+
+#emoji,#send-button {
+    float: left;
+    width: 5%;
+    text-align: center;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+#emoji i, #send-button i {
+    font-size: 20px;
+    color: rgb(152,152,152);
+}
+
+#write-mess {
+    float: left;
+    width: 90%;
+    margin-top: 15px;
+}
+
+.write.write-zone input {
+    width: 90%;
 }
