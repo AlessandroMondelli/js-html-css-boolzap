@@ -24,19 +24,17 @@ $(document).ready(function() {
         var getUser = $(".search-zone input").val(); //Prendo in una variabile la ricerca effettuata
         getUser = getUser.toLowerCase(); //Riduco le lettere scritte dall'utente a minuscole
 
-        var getContacts = []; //Array dove verranno inseriti i nomi dei contatti
         var contacts = $(".mess-conv p"); //Contatti presenti
         contacts.each(function(cont) { //Scorro uno ad uno i contatti
             var temp = $(this).text(); //Prendo i nomi dei contatti
             temp = temp.toLowerCase(); //Metto tutti i contatti in minuscolo
             // getContacts.push(temp); // metto i contatti in un array
-            if ((temp.includes(getUser)) && (getUser.length != 0)) {
-                getContacts.push(temp);
-                $(this).parentsUntil("#conversations").show();
-            } else if (getUser.length == 0){
-                $(this).parentsUntil("#conversations").show();
+            if ((temp.includes(getUser)) && (getUser.length != 0)) { //Se la ricerca è contenuta in qualche contatto
+                $(this).parentsUntil("#conversations").show(); //Mostra i contatti corrispondenti
+            } else if (getUser.length == 0){ //Se la ricerca è vuota
+                $(this).parentsUntil("#conversations").show(); //Mostra tutti i contatti
             } else {
-                $(this).parentsUntil("#conversations").hide();
+                $(this).parentsUntil("#conversations").hide(); //Altrimenti nascondi quelli che non rispondono alla rierca
             }
         })
     });
