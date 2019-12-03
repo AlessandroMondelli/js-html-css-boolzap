@@ -20,6 +20,7 @@
 
 .write input {
     border: 0;
+    width: 100%;
 }
 
 .write input:focus {
@@ -166,10 +167,6 @@
 
 .write.search-zone {
     float: left;
-    width: 75%;
-}
-
-.write.search-zone input {
     width: 80%;
 }
 
@@ -244,7 +241,7 @@
     overflow-y: auto;
 }
 
-.mess {
+.mess-t {
     clear: both;
     margin: 20px;
     width: 325px;
@@ -253,22 +250,33 @@
     position: relative;
 }
 
-.mess.received {
+.mess-t.received {
     float: left;
     background-color: white;
 }
 
-.mess.sent {
+.mess-t.sent {
     float: right;
     background-color: lightgreen;
 }
 
-.mess span {
+.mess-t .mess-time {
     font-size: 12px;
     position: absolute;
     bottom: 5px;
     right: 10px;
     color: rgba(152,152,152,0.7);
+}
+
+.mess-t .mess-option {
+    font-size: 12px;
+    margin-left: 10px;
+    color: rgba(152,152,152,0.7);
+    display: none;
+}
+
+.mess-t:hover .mess-option {
+    display: inline-block;
 }
 
 .send-mess {
@@ -295,6 +303,6 @@
     margin-top: 15px;
 }
 
-.write.write-zone input {
-    width: 90%;
+.template {
+    display: none;
 }
