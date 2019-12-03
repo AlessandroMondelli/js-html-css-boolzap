@@ -1,8 +1,7 @@
 $(document).ready(function() {
 
     $("#send-button").click(function() { //Al click su invio messaggio
-        getMessSendMess();
-
+        getMessSendMess(); //Richiamo funzione per inviare messaggio
     });
 
     $(".write-zone input").keypress(function() { //Funzione che permette di inviare messaggio con invio
@@ -33,7 +32,23 @@ $(document).ready(function() {
             newText.addClass("sent"); //Gli aggiungo la classe sent
             $(".central-message.active").append(newText); //Lo appendo nella classe dei messaggi
             $(".write-zone input").val(""); //Azzero l'input ogni volta che il messaggio viene inviato
+
+            receivedMess(); //Richiamo funzione che riceve messaggio
         }
+    }
+
+    function receivedMess() {
+        var messageReceived = "Ok!";
+
+        setTimeout(function() {
+            var newText = $(".template .mess-t").clone(); //Clono template presente in html
+            var time = setHours();
+            newText.children(".mess").text(messageReceived); //Assegno al figlio "mess" il messaggio preso in input
+            newText.children(".mess-time").text(time);
+
+            newText.addClass("received"); //Gli aggiungo la classe sent
+            $(".central-message.active").append(newText); //Lo appendo nella classe dei messaggi
+        },1000);
     }
 
     function setHours() { //Funzione che recura ora attuale
