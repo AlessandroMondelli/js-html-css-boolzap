@@ -26,10 +26,21 @@ $(document).ready(function() {
 
         if (messageText.length != 0) {
             var newText = $(".template .mess-t").clone(); //Clono template presente in html
+            var time = setHours();
             newText.children(".mess").text(messageText); //Assegno al figlio "mess" il messaggio preso in input
+            newText.children(".mess-time").text(time);
+
             newText.addClass("sent"); //Gli aggiungo la classe sent
             $(".central-message.active").append(newText); //Lo appendo nella classe dei messaggi
             $(".write-zone input").val(""); //Azzero l'input ogni volta che il messaggio viene inviato
         }
+    }
+
+    function setHours() { //Funzione che recura ora attuale
+        var date = new Date; //Variabile che tiene tutte le informazione sulla data
+
+        var minutes = date.getMinutes(); //Prendo i minuti
+        var hour = date.getHours(); //Prendo le ore
+        return (hour + ":"+ minutes); //Invio ore e minti
     }
 });
