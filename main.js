@@ -1,4 +1,59 @@
 $(document).ready(function() {
+
+                        //*** DATI CONTATTI ***//
+                    //Creo oggetti con i dati dei contatti
+    var contattoAlessia = {
+        'imgCont' : "https://image.flaticon.com/icons/svg/145/145862.svg",
+        'name' : ' Alessia ',
+        'lastMess' : 'Ciao! Come stai?',
+        'chatCode' : 'chat1'
+    }
+
+    var contattoMario = {
+        "imgCont" : "https://image.flaticon.com/icons/svg/145/145859.svg",
+        "name" : "Mario",
+        "lastMess" : "Io sto bene",
+        "chatCode" : "chat2"
+    }
+
+    var contattoFrancesca = {
+        "imgCont" : "https://image.flaticon.com/icons/svg/145/145852.svg",
+        "name" : "Francesca",
+        "lastMess" : "Che fai?",
+        "chatCode" : "chat3"
+    }
+
+    var contattoMaria = {
+        "imgCont" : "https://image.flaticon.com/icons/svg/145/145864.svg",
+        "name" : "Maria",
+        "lastMess" : "Che fai?",
+        "chatCode" : "chat4"
+    }
+
+    var elencoCont = [contattoAlessia,contattoMario,contattoFrancesca,contattoMaria]; //Array oggetti
+    console.log(elencoCont);
+
+//*** CREO LISTA CONTATTI ***//
+    for (var i = 0; i < elencoCont.length; i++) { //Scorro ogni elemento dell'array
+        var cont_att = elencoCont[i]; //Prendo dati di ogni singolo oggetto
+        var imgContAtt = cont_att.imgCont; //Dati immagine
+        var nameAtt = cont_att.name; //Dati nome
+        var lastMessAtt = cont_att.lastMess; //Dati ultimo messaggio
+        var chatCodeAtt = cont_att.chatCode; //dati codice chat
+
+        $("#conversations").append(`
+            <div class="n-conv" data-chatCode="` + chatCodeAtt + `">
+                <div class="img-conv">
+                    <img src="` + imgContAtt + `" alt="user">
+                </div>
+                <div class="mess-conv">
+                    <p>` + nameAtt + `</p>
+                    <span>` + lastMessAtt + `<span>
+                </div>
+            `);
+    }
+
+
                     //*** INVIO DEI MESSAGGI ***//
     $("#send-button").click(function() { //Al click su invio messaggio
         getMessSendMess(); //Richiamo funzione per inviare messaggio
@@ -36,7 +91,7 @@ $(document).ready(function() {
             } else {
                 $(this).parentsUntil("#conversations").hide(); //Altrimenti nascondi quelli che non rispondono alla rierca
             }
-        })
+        });
     });
 });
 
@@ -58,8 +113,8 @@ function getMessSendMess() { //Funzione per inviare messaggi
     }
 }
 
-function receivedMess() {
-var messageReceived = "Ok!";
+function receivedMess() { //Funzione che fa ricevere un messaggio
+var messageReceived = "Ok!"; //Testo del messaggio
 
 setTimeout(function() {
     var newText = $(".template .mess-t").clone(); //Clono template presente in html
