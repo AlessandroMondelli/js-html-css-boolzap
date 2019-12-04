@@ -170,7 +170,9 @@ setTimeout(function() {
 
     newText.addClass("received"); //Gli aggiungo la classe sent
     $(".central-message:visible").append(newText); //Lo appendo nella classe dei messaggi
+    $(".top-img-pos.active p:last-child").text("Ultimo accesso oggi alle: " + setHours());
     },1000);
+    $(".top-img-pos.active p:last-child").text("Sta scrivendo...");
 }
 
 function setHours() { //Funzione che recura ora attuale
@@ -181,12 +183,12 @@ function setHours() { //Funzione che recura ora attuale
     return (hour + ":"+ minutes); //Invio ore e minti
 }
 
-function addRemoveClass(add,remove) {
+function addRemoveClass(add,remove) { //Funzione che permette di fare addClass/removeClass di due elementi
     remove.removeClass("active");
     add.addClass("active");
 }
 
-function hideShow(hideEl,showEl) {
+function hideShow(hideEl,showEl) { //Funzione che permette di fare hide/show di due elementi
     hideEl.hide();
     showEl.show();
 }
