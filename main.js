@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
-                        //*** DATI CONTATTI ***//
-                    //Creo oggetti con i dati dei contatti
+                    //*** DATI CONTATTI ***//
+                //Creo oggetti con i dati dei contatti
     var contattoAlessia = {
         'imgCont' : "https://image.flaticon.com/icons/svg/145/145862.svg",
         'name' : ' Alessia ',
@@ -139,6 +139,19 @@ $(document).ready(function() {
             }
         });
     });
+
+    //*** ELIMINA MESSAGGIO ***//
+    $(document).on('click', '.mess-t i', function() { //Al click su freccia presente sul messaggio
+        var tendina = $(this).siblings(".mess-option-panel"); //Prendo il pannello in una variabile
+        if (tendina.hasClass("active")) { //Se è già attiva chiudo il pannello
+            tendina.removeClass("active");
+        } else { //Se non lo è, apro il pannello
+            tendina.addClass("active");
+        }
+        $(".mess-destroy").click(function () { //Al click su elimina
+            $(this).closest(".mess-t").hide(); //Elimina messaggio selezionato
+        })
+    });
 });
 
                     //*** FUNZIONI ***//
@@ -170,7 +183,7 @@ setTimeout(function() {
 
     newText.addClass("received"); //Gli aggiungo la classe sent
     $(".central-message:visible").append(newText); //Lo appendo nella classe dei messaggi
-    $(".top-img-pos.active p:last-child").text("Ultimo accesso oggi alle: " + setHours());
+    $(".top-img-pos.active p:last-child").text("Ultimo accesso oggi alle " + setHours());
     },1000);
     $(".top-img-pos.active p:last-child").text("Sta scrivendo...");
 }
