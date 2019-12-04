@@ -90,7 +90,6 @@
     height: inherit;
     display: inline-block;
     text-align: center;
-    margin-top: 5px;
     margin-left: 5px;
 }
 
@@ -102,6 +101,9 @@
     border-radius: 50%;
     width: 45px;
     height: 45px;
+}
+
+.top-images.my-profile img {
     margin-top: 5px;
 }
 
@@ -182,6 +184,10 @@
     cursor: pointer;
 }
 
+.n-conv.active {
+background-color: rgba(152,152,152,0.3);
+}
+
 .img-conv {
     float: left;
     width: 15%;
@@ -208,7 +214,7 @@
 }
 
 .n-conv  {
-    margin-bottom: 10px;
+    padding-bottom: 10px;
 }
 
 .n-conv:not(:last-child)  {
@@ -230,6 +236,14 @@
 
 .top-container.right .top-images p:last-child {
     color: rgb(152,152,152);
+}
+
+.top-img-pos {
+    display: none;
+}
+
+.top-img-pos.active {
+    display: block;
 }
 
 .central-message-zone {
