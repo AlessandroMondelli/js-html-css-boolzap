@@ -47,7 +47,7 @@ $(document).ready(function() {
 
         //Creo i contatti su HTML
         $("#conversations").append(`
-            <div class="n-conv" data-chatCode="` + chatCodeAtt + `">
+            <div class="n-conv" data-chatcode="` + chatCodeAtt + `">
                 <div class="img-conv">
                     <img src="` + imgContAtt + `" alt="user">
                 </div>
@@ -59,7 +59,7 @@ $(document).ready(function() {
 
         //Creo immagini superiori
         $(".top-images.change").append(`
-            <div class="top-img-pos" data-chatCode="` + chatCodeAtt + `">
+            <div class="top-img-pos" data-chatcode="` + chatCodeAtt + `">
                 <img src="` + imgContAtt + `" alt="Immagine Contatto">
                 <p>` + nameAtt + `</p>
                 <p>` + lastAccessAtt + `</p>
@@ -68,7 +68,7 @@ $(document).ready(function() {
 
         //Creo zone messaggi
         $(".central-message-zone").append(`
-            <div class="central-message" data-chatCode="` + chatCodeAtt + `"></div>
+            <div class="central-message" data-chatcode="` + chatCodeAtt + `"></div>
         `)
     }
 
