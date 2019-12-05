@@ -5,8 +5,9 @@ $(document).ready(function() {
     var contattoAlessia = {
         'imgCont' : "https://image.flaticon.com/icons/svg/145/145862.svg",
         'name' : ' Alessia ',
-        'lastMess' : 'Ciao! Come stai?',
+        'lastMess' : 'Ciao! Tutto bene, tu?',
         'lastAccess': 'Ultimo accesso oggi alle 10:40',
+        'messSent' : 'Hey! Come stai?',
         'chatCode' : 'chat1'
     }
 
@@ -15,22 +16,25 @@ $(document).ready(function() {
         "name" : "Mario",
         "lastMess" : "Io sto bene",
         'lastAccess': 'Ultimo accesso oggi alle 12:14',
+        'messSent' : 'Tu come stai?',
         "chatCode" : "chat2"
     }
 
     var contattoFrancesca = {
         "imgCont" : "https://image.flaticon.com/icons/svg/145/145852.svg",
         "name" : "Francesca",
-        "lastMess" : "Che fai?",
+        "lastMess" : "Niente, tu?",
         'lastAccess': ' Ultimo accesso oggi alle 13:15',
+        'messSent' : 'Che fai?',
         "chatCode" : "chat3"
     }
 
     var contattoMaria = {
         "imgCont" : "https://image.flaticon.com/icons/svg/145/145864.svg",
         "name" : "Maria",
-        "lastMess" : "Che fai?",
+        "lastMess" : "Niente di che!",
         'lastAccess': ' Ultimo accesso oggi alle 07:14',
+        'messSent' : 'Che si dice?',
         "chatCode" : "chat4"
     }
 
@@ -43,6 +47,7 @@ $(document).ready(function() {
         var nameAtt = cont_att.name; //Dati nome
         var lastMessAtt = cont_att.lastMess; //Dati ultimo messaggio
         var lastAccessAtt = cont_att.lastAccess; //Dati ultimo messaggio
+        var messSentAtt = cont_att.messSent; //Dati ultimo messaggio
         var chatCodeAtt = cont_att.chatCode; //dati codice chat
 
         //Creo i contatti su HTML
@@ -68,7 +73,10 @@ $(document).ready(function() {
 
         //Creo zone messaggi
         $(".central-message-zone").append(`
-            <div class="central-message" data-chatcode="` + chatCodeAtt + `"></div>
+            <div class="central-message" data-chatcode="` + chatCodeAtt + `">
+                <div class="mess-t sent">` + messSentAtt + `</div>
+                <div class="mess-t received">` + lastMessAtt + `</div>
+            </div>
         `)
     }
 
@@ -103,6 +111,7 @@ $(document).ready(function() {
                     //*** INVIO DEI MESSAGGI ***//
     $("#send-button").click(function() { //Al click su invio messaggio
         getMessSendMess(); //Richiamo funzione per inviare messaggio
+        verMic(); //Quando invio il messaggio, faccio tornare l'icona del microfono
     });
 
     $(".write-zone input").keypress(function() { //Funzione che permette di inviare messaggio con invio
@@ -111,13 +120,8 @@ $(document).ready(function() {
         }
     });
 
-    $( ".write-zone input").keyup(function() { //Funzione per cambiare icona microfono/aeroplano
-        var input = $( ".write-zone input").val(); //Prendo in una variabile il valore dell'input
-        if (input != 0) { //Se non è vuoto...
-            $("#send-button i").removeClass("fa-microphone").addClass("fa-paper-plane"); //Fai vedere aeroplano
-        } else {
-            $("#send-button i").addClass("fa-microphone").removeClass("fa-paper-plane"); //Fai vedere microfono
-        }
+    $( ".write-zone input").keyup(function() { //Funzione per cambiare icona microfono/aeroplano appena l'utente digita
+        verMic();
     });
 
                    //***RICERCA UTENTE CHAT ***//
@@ -152,6 +156,9 @@ $(document).ready(function() {
             $(this).closest(".mess-t").hide(); //Elimina messaggio selezionato
         })
     });
+
+    //Appena l'utente apre la pagina, mostro la prima chat
+    $(".n-conv[data-chatcode ='chat1'").trigger("click");
 });
 
                     //*** FUNZIONI ***//
@@ -183,9 +190,20 @@ setTimeout(function() {
 
     newText.addClass("received"); //Gli aggiungo la classe sent
     $(".central-message:visible").append(newText); //Lo appendo nella classe dei messaggi
-    $(".top-img-pos.active p:last-child").text("Ultimo accesso oggi alle " + setHours());
+    $(".top-img-pos.active p:last-child").text("Ultimo accesso oggi alle " + setHours()); //Setto l'ultimo accesso all'ora attuale
+    $(".n-conv.active").find(".mess-conv span").text(messageReceived); //Cambio l'anteprima dell'ultimo messaggio ricevuto sotto al contatto con il nuovo messaggio ricevuto
     },1000);
+    //Stato di "Sta scrivendo..." che simula la scrittura della risposta
     $(".top-img-pos.active p:last-child").text("Sta scrivendo...");
+}
+
+function verMic() { //Funzione che verifica la presenza del microfono o aeroplano
+    var input = $( ".write-zone input").val(); //Prendo in una variabile il valore dell'input
+    if (input != 0) { //Se non è vuoto...
+        $("#send-button i").removeClass("fa-microphone").addClass("fa-paper-plane"); //Fai vedere aeroplano
+    } else {
+        $("#send-button i").addClass("fa-microphone").removeClass("fa-paper-plane"); //Fai vedere microfono
+    }
 }
 
 function setHours() { //Funzione che recura ora attuale
