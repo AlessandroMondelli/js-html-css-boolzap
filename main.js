@@ -77,24 +77,24 @@ $(document).ready(function() {
         var temp = (this).dataset.chatcode; //Ricevo dal click quale contatto è stato cliccato
         switch (temp) { //In base al contatto cliccato mostro la chat
             case "chat1": //In caso di chat 1
-                addRemoveClass($(".n-conv[data-chatcode ='chat1']"),$(".n-conv")); //Aggiungo colore di sfondo al contatto selezionato
-                addRemoveClass($(".top-img-pos[data-chatcode ='chat1']"),$(".top-img-pos")); //Aggiungo foto del contatto nella chat
-                hideShow($(".central-message"),$(".central-message[data-chatcode ='chat1']")); //Mostro la conversazione richiesta
+                addRemoveClass($(".n-conv[data-chatcode ='chat1']"),$(".n-conv.active")); //Aggiungo colore di sfondo al contatto selezionato
+                addRemoveClass($(".top-img-pos[data-chatcode ='chat1']"),$(".top-img-pos.active")); //Aggiungo foto del contatto nella chat
+                hideShow($(".central-message:visible"),$(".central-message[data-chatcode ='chat1']")); //Mostro la conversazione richiesta
             break;
             case "chat2": //In caso di chat 2
-                addRemoveClass($(".n-conv[data-chatcode ='chat2']"),$(".n-conv")); //Aggiungo colore di sfondo al contatto selezionato
-                addRemoveClass($(".top-img-pos[data-chatcode ='chat2']"),$(".top-img-pos")); //Aggiungo foto del contatto nella chat
-                hideShow($(".central-message"),$(".central-message[data-chatcode ='chat2']")); //Mostro la conversazione richiesta
+                addRemoveClass($(".n-conv[data-chatcode ='chat2']"),$(".n-conv.active")); //Aggiungo colore di sfondo al contatto selezionato
+                addRemoveClass($(".top-img-pos[data-chatcode ='chat2']"),$(".top-img-pos.active")); //Aggiungo foto del contatto nella chat
+                hideShow($(".central-message:visible"),$(".central-message[data-chatcode ='chat2']")); //Mostro la conversazione richiesta
             break;
             case "chat3": //In caso di chat 3
-                addRemoveClass($(".n-conv[data-chatcode ='chat3']"),$(".n-conv"),); //Aggiungo colore di sfondo al contatto selezionato
-                addRemoveClass($(".top-img-pos[data-chatcode ='chat3']"),$(".top-img-pos")); //Aggiungo foto del contatto nella chat
-                hideShow($(".central-message"),$(".central-message[data-chatcode ='chat3']")); //Mostro la conversazione richiesta
+                addRemoveClass($(".n-conv[data-chatcode ='chat3']"),$(".n-conv.active"),); //Aggiungo colore di sfondo al contatto selezionato
+                addRemoveClass($(".top-img-pos[data-chatcode ='chat3']"),$(".top-img-pos.active")); //Aggiungo foto del contatto nella chat
+                hideShow($(".central-message:visible"),$(".central-message[data-chatcode ='chat3']")); //Mostro la conversazione richiesta
             break;
             case "chat4": //In caso di chat 4
-                addRemoveClass($(".n-conv[data-chatcode ='chat4']"),$(".n-conv")); //Aggiungo colore di sfondo al contatto selezionato
-                addRemoveClass($(".top-img-pos[data-chatcode ='chat4']"),$(".top-img-pos")); //Aggiungo foto del contatto nella chat
-                hideShow($(".central-message"),$(".central-message[data-chatcode ='chat4']")); //Mostro la conversazione richiesta
+                addRemoveClass($(".n-conv[data-chatcode ='chat4']"),$(".n-conv.active")); //Aggiungo colore di sfondo al contatto selezionato
+                addRemoveClass($(".top-img-pos[data-chatcode ='chat4']"),$(".top-img-pos.active")); //Aggiungo foto del contatto nella chat
+                hideShow($(".central-message:visible"),$(".central-message[data-chatcode ='chat4']")); //Mostro la conversazione richiesta
             break;
         }
     });
