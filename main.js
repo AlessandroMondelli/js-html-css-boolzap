@@ -144,7 +144,7 @@ $(document).ready(function() {
         });
     });
 
-    //*** ELIMINA MESSAGGIO ***//
+                    //*** ELIMINA MESSAGGIO ***//
     $(document).on('click', '.mess-t i', function() { //Al click su freccia presente sul messaggio
         var tendina = $(this).siblings(".mess-option-panel"); //Prendo il pannello in una variabile
         if (tendina.hasClass("active")) { //Se è già attiva chiudo il pannello
@@ -158,7 +158,7 @@ $(document).ready(function() {
     });
 
     //Appena l'utente apre la pagina, mostro la prima chat
-    $(".n-conv[data-chatcode ='chat1'").trigger("click");
+    $(".n-conv[data-chatcode ='chat1']").trigger("click");
 });
 
                     //*** FUNZIONI ***//
@@ -175,11 +175,14 @@ function getMessSendMess() { //Funzione per inviare messaggi
         $(".central-message:visible").append(newText); //Lo appendo nella classe dei messaggi
         $(".write-zone input").val(""); //Azzero l'input ogni volta che il messaggio viene inviato
 
+
+
         receivedMess(); //Richiamo funzione che riceve messaggio
     }
 }
 
 function receivedMess() { //Funzione che fa ricevere un messaggio
+var contAtt = $(".n-conv.active"); //Metto in una variabile il contatto attualmente selezionato
 var messageReceived = "Ok!"; //Testo del messaggio
 
 setTimeout(function() {
@@ -191,7 +194,9 @@ setTimeout(function() {
     newText.addClass("received"); //Gli aggiungo la classe sent
     $(".central-message:visible").append(newText); //Lo appendo nella classe dei messaggi
     $(".top-img-pos.active p:last-child").text("Ultimo accesso oggi alle " + setHours()); //Setto l'ultimo accesso all'ora attuale
-    $(".n-conv.active").find(".mess-conv span").text(messageReceived); //Cambio l'anteprima dell'ultimo messaggio ricevuto sotto al contatto con il nuovo messaggio ricevuto
+
+    contAtt.prependTo("#conversations"); //Sposto l'ultima conversazione per prima
+    contAtt.find(".mess-conv span").text(messageReceived); //Cambio l'anteprima dell'ultimo messaggio ricevuto sotto al contatto con il nuovo messaggio ricevuto
     },1000);
     //Stato di "Sta scrivendo..." che simula la scrittura della risposta
     $(".top-img-pos.active p:last-child").text("Sta scrivendo...");
