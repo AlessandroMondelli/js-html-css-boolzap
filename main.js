@@ -82,29 +82,17 @@ $(document).ready(function() {
 
                     //*** SCELTA CHAT ***/
     $("#conversations .n-conv").click(function() {
-        var temp = (this).dataset.chatcode; //Ricevo dal click quale contatto è stato cliccato
-        switch (temp) { //In base al contatto cliccato mostro la chat
-            case "chat1": //In caso di chat 1
-                addRemoveClass($(".n-conv[data-chatcode ='chat1']"),$(".n-conv.active")); //Aggiungo colore di sfondo al contatto selezionato
-                addRemoveClass($(".top-img-pos[data-chatcode ='chat1']"),$(".top-img-pos.active")); //Aggiungo foto del contatto nella chat
-                hideShow($(".central-message:visible"),$(".central-message[data-chatcode ='chat1']")); //Mostro la conversazione richiesta
-            break;
-            case "chat2": //In caso di chat 2
-                addRemoveClass($(".n-conv[data-chatcode ='chat2']"),$(".n-conv.active")); //Aggiungo colore di sfondo al contatto selezionato
-                addRemoveClass($(".top-img-pos[data-chatcode ='chat2']"),$(".top-img-pos.active")); //Aggiungo foto del contatto nella chat
-                hideShow($(".central-message:visible"),$(".central-message[data-chatcode ='chat2']")); //Mostro la conversazione richiesta
-            break;
-            case "chat3": //In caso di chat 3
-                addRemoveClass($(".n-conv[data-chatcode ='chat3']"),$(".n-conv.active"),); //Aggiungo colore di sfondo al contatto selezionato
-                addRemoveClass($(".top-img-pos[data-chatcode ='chat3']"),$(".top-img-pos.active")); //Aggiungo foto del contatto nella chat
-                hideShow($(".central-message:visible"),$(".central-message[data-chatcode ='chat3']")); //Mostro la conversazione richiesta
-            break;
-            case "chat4": //In caso di chat 4
-                addRemoveClass($(".n-conv[data-chatcode ='chat4']"),$(".n-conv.active")); //Aggiungo colore di sfondo al contatto selezionato
-                addRemoveClass($(".top-img-pos[data-chatcode ='chat4']"),$(".top-img-pos.active")); //Aggiungo foto del contatto nella chat
-                hideShow($(".central-message:visible"),$(".central-message[data-chatcode ='chat4']")); //Mostro la conversazione richiesta
-            break;
-        }
+        var contAtt = $(".n-conv.active"); //Variabile che contiene la chat attiva
+        var imgContAtt = $(".top-img-pos.active"); //Variabile che contiene l'immagine profilo del contatto attuale
+        var chatZoneAtt = $(".central-message:visible"); //Variabile che contiene zona chat attuale
+
+        var tempContatto = $(".n-conv[data-chatcode ='" + (this).dataset.chatcode + "']"); //Ricevo dal click quale contatto è stato cliccato
+        var tempImgCont = $(".top-img-pos[data-chatcode ='" + (this).dataset.chatcode + "']"); //Immagine profilo del contatto cliccato
+        var tempChatZone = $(".central-message[data-chatcode ='" + (this).dataset.chatcode + "']"); //Chat del contatto cliccato
+
+        addRemoveClass(tempContatto,contAtt); //Attivo contatto cliccato
+        addRemoveClass(tempImgCont,imgContAtt); //Aggiungo foto del contatto nella chat
+        hideShow(chatZoneAtt,tempChatZone); //Mostro la conversazione richiesta
     });
 
 
@@ -175,8 +163,6 @@ function getMessSendMess() { //Funzione per inviare messaggi
         $(".central-message:visible").append(newText); //Lo appendo nella classe dei messaggi
         $(".write-zone input").val(""); //Azzero l'input ogni volta che il messaggio viene inviato
 
-
-
         receivedMess(); //Richiamo funzione che riceve messaggio
     }
 }
@@ -198,8 +184,7 @@ setTimeout(function() {
     contAtt.prependTo("#conversations"); //Sposto l'ultima conversazione per prima
     contAtt.find(".mess-conv span").text(messageReceived); //Cambio l'anteprima dell'ultimo messaggio ricevuto sotto al contatto con il nuovo messaggio ricevuto
     },1000);
-    //Stato di "Sta scrivendo..." che simula la scrittura della risposta
-    $(".top-img-pos.active p:last-child").text("Sta scrivendo...");
+$(".top-img-pos.active p:last-child").text("Sta scrivendo..."); //Stato di "Sta scrivendo..." che simula la scrittura della risposta
 }
 
 function verMic() { //Funzione che verifica la presenza del microfono o aeroplano
