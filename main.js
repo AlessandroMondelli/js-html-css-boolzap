@@ -154,13 +154,30 @@ function getMessSendMess() { //Funzione per inviare messaggi
     var messageText = $(".write-zone input").val(); //Prendo in una variabile il messaggio scritto dall'utente
 
     if (messageText.length != 0 && $(".n-conv").hasClass("active")) {
-        var newText = $(".template .mess-t").clone(); //Clono template presente in html
-        var time = setHours();
-        newText.children(".mess").text(messageText); //Assegno al figlio "mess" il messaggio preso in input
-        newText.children(".mess-time").text(time);
+        var templHtml = $("#template-mess").html(); //Metto in una variabile il template creato con Handlebars
+        var time = setHours(); //Richiamo la funzione per ricevere ore/minuti
 
-        newText.addClass("sent"); //Gli aggiungo la classe sent
-        $(".central-message:visible").append(newText); //Lo appendo nella classe dei messaggi
+        var templFun = Handlebars.compile(templHtml); //Lascio compilare a Handlebars il template
+
+        var varMess = { //Variabili che prenderano posto nell'Html
+            "newText" : messageText, //testo messaggio
+            "messTime" : time, //Ora del messaggio
+            "stat" : "sent" //Classe sent
+        }
+
+        var finalHtml = templFun(varMess); //assegno la funzione ad una variabile
+        $(".central-message:visible").append(finalHtml) //Appendo codice nella sezione messaggi
+
+                            //** Metodo Clone() **//
+        // var newText = $(".template .mess-t").clone(); //Clono template presente in html
+        // var time = setHours();
+        // newText.children(".mess").text(messageText); //Assegno al figlio "mess" il messaggio preso in input
+        // newText.children(".mess-time").text(time);
+        //
+        // newText.addClass("sent"); //Gli aggiungo la classe sent
+        // $(".central-message:visible").append(newText); //Lo appendo nella classe dei messaggi
+        //----------------------------------------------------------------------//
+
         $(".write-zone input").val(""); //Azzero l'input ogni volta che il messaggio viene inviato
 
         receivedMess(); //Richiamo funzione che riceve messaggio
@@ -168,23 +185,40 @@ function getMessSendMess() { //Funzione per inviare messaggi
 }
 
 function receivedMess() { //Funzione che fa ricevere un messaggio
-var contAtt = $(".n-conv.active"); //Metto in una variabile il contatto attualmente selezionato
-var messageReceived = "Ok!"; //Testo del messaggio
+    var contAtt = $(".n-conv.active"); //Metto in una variabile il contatto attualmente selezionato
+    var messageReceived = "Ok!"; //Testo del messaggio
 
-setTimeout(function() {
-    var newText = $(".template .mess-t").clone(); //Clono template presente in html
-    var time = setHours();
-    newText.children(".mess").text(messageReceived); //Assegno al figlio "mess" il messaggio preso in input
-    newText.children(".mess-time").text(time);
+    var templHtml = $("#template-mess").html(); //Metto in una variabile il template creato con Handlebars
+    var time = setHours(); //Richiamo la funzione per ricevere ore/minuti
 
-    newText.addClass("received"); //Gli aggiungo la classe sent
-    $(".central-message:visible").append(newText); //Lo appendo nella classe dei messaggi
+    var templFun = Handlebars.compile(templHtml); //Lascio compilare a Handlebars il template
+
+    var varMess = { //Variabili che prenderano posto nell'Html
+    "newText" : messageReceived, //testo messaggio
+    "messTime" : time, //Ora del messaggio
+    "stat" : "received" //Classe received
+    }
+    var finalHtml = templFun(varMess); //assegno la funzione ad una variabile
+
+    setTimeout(function() {
+    $(".central-message:visible").append(finalHtml) //Appendo codice nella sezione messaggi
+
+                        //** Metodo CLone() **//
+    // var newText = $(".template .mess-t").clone(); //Clono template presente in html
+    // var time = setHours();
+    // newText.children(".mess").text(messageReceived); //Assegno al figlio "mess" il messaggio preso in input
+    // newText.children(".mess-time").text(time);
+    //
+    // newText.addClass("received"); //Gli aggiungo la classe sent
+    // $(".central-message:visible").append(newText); //Lo appendo nella classe dei messaggi
+    //----------------------------------------------------------------------------//
+
     $(".top-img-pos.active p:last-child").text("Ultimo accesso oggi alle " + setHours()); //Setto l'ultimo accesso all'ora attuale
 
     contAtt.prependTo("#conversations"); //Sposto l'ultima conversazione per prima
     contAtt.find(".mess-conv span").text(messageReceived); //Cambio l'anteprima dell'ultimo messaggio ricevuto sotto al contatto con il nuovo messaggio ricevuto
     },1000);
-$(".top-img-pos.active p:last-child").text("Sta scrivendo..."); //Stato di "Sta scrivendo..." che simula la scrittura della risposta
+    $(".top-img-pos.active p:last-child").text("Sta scrivendo..."); //Stato di "Sta scrivendo..." che simula la scrittura della risposta
 }
 
 function verMic() { //Funzione che verifica la presenza del microfono o aeroplano
