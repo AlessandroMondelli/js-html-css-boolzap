@@ -3,7 +3,7 @@ $(document).ready(function() {
                     //*** DATI CONTATTI ***//
                 //Creo oggetti con i dati dei contatti
     var contattoAlessia = {
-        'imgCont' : "https://image.flaticon.com/icons/svg/145/145862.svg",
+        'imgCont' : "user-woman-1",
         'name' : ' Alessia ',
         'lastMess' : 'Ciao! Tutto bene, tu?',
         'lastAccess': 'Ultimo accesso oggi alle 10:40',
@@ -12,7 +12,7 @@ $(document).ready(function() {
     }
 
     var contattoMario = {
-        "imgCont" : "https://image.flaticon.com/icons/svg/145/145859.svg",
+        "imgCont" : "user-man-1",
         "name" : "Mario",
         "lastMess" : "Io sto bene",
         'lastAccess': 'Ultimo accesso oggi alle 12:14',
@@ -21,7 +21,7 @@ $(document).ready(function() {
     }
 
     var contattoFrancesca = {
-        "imgCont" : "https://image.flaticon.com/icons/svg/145/145852.svg",
+        "imgCont" : "user-woman-2",
         "name" : "Francesca",
         "lastMess" : "Niente, tu?",
         'lastAccess': ' Ultimo accesso oggi alle 13:15',
@@ -30,7 +30,7 @@ $(document).ready(function() {
     }
 
     var contattoMaria = {
-        "imgCont" : "https://image.flaticon.com/icons/svg/145/145864.svg",
+        "imgCont" : "user-woman-3",
         "name" : "Maria",
         "lastMess" : "Niente di che!",
         'lastAccess': ' Ultimo accesso oggi alle 07:14',
@@ -54,7 +54,7 @@ $(document).ready(function() {
         $("#conversations").append(`
             <div class="n-conv" data-chatcode="` + chatCodeAtt + `">
                 <div class="img-conv">
-                    <img src="` + imgContAtt + `" alt="user">
+                    <img src="assets/images/` + imgContAtt + `.png" alt="user">
                 </div>
                 <div class="mess-conv">
                     <p>` + nameAtt + `</p>
@@ -65,7 +65,7 @@ $(document).ready(function() {
         //Creo immagini superiori
         $(".top-images.change").append(`
             <div class="top-img-pos" data-chatcode="` + chatCodeAtt + `">
-                <img src="` + imgContAtt + `" alt="Immagine Contatto">
+                <img src="assets/images/` + imgContAtt + `.png" alt="Immagine Contatto">
                 <p>` + nameAtt + `</p>
                 <p>` + lastAccessAtt + `</p>
             </div>
